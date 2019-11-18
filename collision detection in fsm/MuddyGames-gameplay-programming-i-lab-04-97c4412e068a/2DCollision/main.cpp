@@ -47,7 +47,7 @@ int main()
 	playerAABB.setSize(sf::Vector2f{ 20, 20 });
 
 	sf::RectangleShape npcAABB;
-	npcAABB.setFillColor(sf::Color::Blue);
+	npcAABB.setFillColor(sf::Color::Yellow);
 	npcAABB.setPosition(rand() % 600 + 100, rand() % 400 + 100);
 	npcAABB.setSize(sf::Vector2f{ 100, 100 });
 
@@ -77,7 +77,7 @@ int main()
 	gameCircle.r = 50;
 	sf::CircleShape gameCircleShape(gameCircle.r);
 	gameCircleShape.setPosition(gameCircle.p.x, gameCircle.p.y);
-	gameCircleShape.setFillColor(sf::Color::Cyan);
+	gameCircleShape.setFillColor(sf::Color::Blue);
 	gameCircleShape.setOrigin(gameCircle.r, gameCircle.r);
 
 	// Game Capsule -----------------------------------------------------
@@ -93,7 +93,7 @@ int main()
 	playerCapsule.b = { 250, 100 };
 	playerCapsule.r = 30;
 
-	Capsule playerCapShape(sf::Vector2f{ playerCapsule.a.x,playerCapsule.a.y }, sf::Vector2f{ playerCapsule.b.x,playerCapsule.b.y }, playerCapsule.r, sf::Color::Blue);
+	Capsule playerCapShape(sf::Vector2f{ playerCapsule.a.x,playerCapsule.a.y }, sf::Vector2f{ playerCapsule.b.x,playerCapsule.b.y }, playerCapsule.r, sf::Color::Cyan);
 
 	// 2 Game Polygons ----------------------------------------------------------
 	c2Poly gamePolyC2;
@@ -302,14 +302,14 @@ int main()
 				rayDrawn = false;
 				rectangleDrawn = false;
 			}
-			/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
 			{
-				circleDrawn = false;;
-				capsuleDrawn = false;
-				triangleDrawn = false;
+				circleDrawn = true;;
+				capsuleDrawn = true;
+				triangleDrawn = true;
 				rayDrawn = true;
-				rectangleDrawn = false;
-			}*/
+				rectangleDrawn = true;
+			}
 		}
 		else if (myPlayerShape == Circle)
 		{
@@ -460,14 +460,14 @@ int main()
 				rayDrawn = false;
 				rectangleDrawn = false;
 			}
-			/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
 			{
-				circleDrawn = false;;
-				capsuleDrawn = false;
-				triangleDrawn = false;
+				circleDrawn = true;;
+				capsuleDrawn = true;
+				triangleDrawn = true;
 				rayDrawn = true;
-				rectangleDrawn = false;
-			}*/
+				rectangleDrawn = true;
+			}
 		}
 		else if (myPlayerShape == Ray)
 		{
@@ -482,9 +482,9 @@ int main()
 				playerCapShape.setPosition(sf::Vector2f{ -3000, -2000 });
 
 				// Reset-----------------------------------------------------------------------------
-				gamePolyC2.verts[0] = c2V(200, 150);
+				/*gamePolyC2.verts[0] = c2V(200, 150);
 				gamePolyC2.verts[1] = c2V(350, 180);
-				gamePolyC2.verts[2] = c2V(350, 250);
+				gamePolyC2.verts[2] = c2V(350, 250);*/
 				gameCapsule.a = { 300, 100 };
 				gameCapsule.b = { 400, 100 };
 				npcAABB.setPosition(rand() % 600 + 100, rand() % 400 + 100);
@@ -633,14 +633,14 @@ int main()
 				rayDrawn = false;
 				rectangleDrawn = false;
 			}
-			/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
 			{
-				circleDrawn = false;;
-				capsuleDrawn = false;
-				triangleDrawn = false;
+				circleDrawn = true;;
+				capsuleDrawn = true;
+				triangleDrawn = true;
 				rayDrawn = true;
-				rectangleDrawn = false;
-			}*/
+				rectangleDrawn = true;
+			}
 		}
 		else if (myPlayerShape == CapsuleState)
 		{
@@ -791,14 +791,14 @@ int main()
 				rayDrawn = false;
 				rectangleDrawn = false;
 			}
-			/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
 			{
-				circleDrawn = false;;
-				capsuleDrawn = false;
-				triangleDrawn = false;
+				circleDrawn = true;;
+				capsuleDrawn = true;
+				triangleDrawn = true;
 				rayDrawn = true;
-				rectangleDrawn = false;
-			}*/
+				rectangleDrawn = true;
+			}
 		}
 
 
@@ -1008,6 +1008,7 @@ int main()
 		if (triangleDrawn)
 		{
 			window.draw(convexShapeTrianlge);
+			window.draw(otherconvexShapeTrianlge);
 		}
 		window.draw(playerCircle);
 		window.draw(playerAABB);
