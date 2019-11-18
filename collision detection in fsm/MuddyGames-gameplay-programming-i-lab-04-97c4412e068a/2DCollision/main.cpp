@@ -180,69 +180,77 @@ int main()
 			playerAABB.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
 
 			//  AABB to AABB collision check -------------------------------------------------------------
-			result = c2AABBtoAABB(aabb_player, aabb_npc);
-			cout << ((result != 0) ? ("AABB to AABB - Collision ") : "") << endl;
-			if (result)
+			if (rectangleDrawn)
 			{
-				playerAABB.setFillColor(sf::Color(255, 0, 0));
-				collided = true;
+				result = c2AABBtoAABB(aabb_player, aabb_npc);
+				cout << ((result != 0) ? ("AABB to AABB - Collision ") : "") << endl;
+				if (result)
+				{
+					playerAABB.setFillColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerAABB.setFillColor(sf::Color(0, 255, 0));
+				}
 			}
-			else if (collided == false)
-			{
-				playerAABB.setFillColor(sf::Color(0, 255, 0));
-			}
-
 			//  AABB to Circle collision check -------------------------------------------------------------
-			result = c2CircletoAABB(gameCircle, aabb_player);
-			cout << ((result != 0) ? ("AABB to Circle - Collision") : "") << endl;
-			if (result)
+			if (circleDrawn)
 			{
-				playerAABB.setFillColor(sf::Color(255, 0, 0));
-				collided = true;
+				result = c2CircletoAABB(gameCircle, aabb_player);
+				cout << ((result != 0) ? ("AABB to Circle - Collision") : "") << endl;
+				if (result)
+				{
+					playerAABB.setFillColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerAABB.setFillColor(sf::Color(0, 255, 0));
+				}
 			}
-			else if (collided == false)
-			{
-				playerAABB.setFillColor(sf::Color(0, 255, 0));
-			}
-
 			//  AABB to Polygon Capsule check --------------------------------------------------------------
-			result = c2AABBtoCapsule(aabb_player, gameCapsule);
-			cout << ((result != 0) ? ("AABB to Capsule - Collision") : "") << endl;
-			if (result)
+			if (capsuleDrawn)
 			{
-				playerAABB.setFillColor(sf::Color(255, 0, 0));
-				collided = true;
+				result = c2AABBtoCapsule(aabb_player, gameCapsule);
+				cout << ((result != 0) ? ("AABB to Capsule - Collision") : "") << endl;
+				if (result)
+				{
+					playerAABB.setFillColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerAABB.setFillColor(sf::Color(0, 255, 0));
+				}
 			}
-			else if (collided == false)
-			{
-				playerAABB.setFillColor(sf::Color(0, 255, 0));
-			}
-
 			//  AABB to Polygon collision check ----------------------------------------------------------------
-			result = c2AABBtoPoly(aabb_player, &gamePolyC2, NULL);
-			cout << ((result != 0) ? ("AABB to Polygon - Collision") : "") << endl;
-			if (result)
+			if (triangleDrawn)
 			{
-				playerAABB.setFillColor(sf::Color(255, 0, 0));
-				collided = true;
-			}
-			else if (collided == false)
-			{
-				playerAABB.setFillColor(sf::Color(0, 255, 0));
-			}
+				result = c2AABBtoPoly(aabb_player, &gamePolyC2, NULL);
+				cout << ((result != 0) ? ("AABB to Polygon - Collision") : "") << endl;
+				if (result)
+				{
+					playerAABB.setFillColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerAABB.setFillColor(sf::Color(0, 255, 0));
+				}
 
-			result = c2AABBtoPoly(aabb_player, &othergamePolyC2, NULL);
-			cout << ((result != 0) ? ("AABB to Polygon - Collision") : "") << endl;
-			if (result)
-			{
-				playerAABB.setFillColor(sf::Color(255, 0, 0));
-				collided = true;
+				result = c2AABBtoPoly(aabb_player, &othergamePolyC2, NULL);
+				cout << ((result != 0) ? ("AABB to Polygon - Collision") : "") << endl;
+				if (result)
+				{
+					playerAABB.setFillColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerAABB.setFillColor(sf::Color(0, 255, 0));
+				}
 			}
-			else if (collided == false)
-			{
-				playerAABB.setFillColor(sf::Color(0, 255, 0));
-			}
-
 			// Input from Keyboard check ------------------------------------------------------------------------
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
 			{
@@ -330,69 +338,77 @@ int main()
 			playerCircleC2.p.y = window.mapPixelToCoords(sf::Mouse::getPosition(window)).y;
 
 			// Circle to Capsule ----------------------------------------------------------
-			result = c2CircletoCapsule(playerCircleC2, gameCapsule);
-			cout << ((result != 0) ? ("Circle to Capsule - Collision") : "") << endl;
-			if (result)
+			if (capsuleDrawn)
 			{
-				playerCircle.setFillColor(sf::Color(255, 0, 0));
-				collided = true;
+				result = c2CircletoCapsule(playerCircleC2, gameCapsule);
+				cout << ((result != 0) ? ("Circle to Capsule - Collision") : "") << endl;
+				if (result)
+				{
+					playerCircle.setFillColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerCircle.setFillColor(sf::Color(0, 255, 0));
+				}
 			}
-			else if (collided == false)
-			{
-				playerCircle.setFillColor(sf::Color(0, 255, 0));
-			}
-
 			// Circle to Poly ----------------------------------------------------------------
-			result = c2CircletoPoly(playerCircleC2, &gamePolyC2, NULL);
-			cout << ((result != 0) ? ("Circle to Poly - Collision") : "") << endl;
-			if (result)
+			if (triangleDrawn)
 			{
-				playerCircle.setFillColor(sf::Color(255, 0, 0));
-				collided = true;
-			}
-			else if (collided == false)
-			{
-				playerCircle.setFillColor(sf::Color(0, 255, 0));
-			}
+				result = c2CircletoPoly(playerCircleC2, &gamePolyC2, NULL);
+				cout << ((result != 0) ? ("Circle to Poly - Collision") : "") << endl;
+				if (result)
+				{
+					playerCircle.setFillColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerCircle.setFillColor(sf::Color(0, 255, 0));
+				}
 
-			result = c2CircletoPoly(playerCircleC2, &othergamePolyC2, NULL);
-			cout << ((result != 0) ? ("Circle to Poly - Collision") : "") << endl;
-			if (result)
-			{
-				playerCircle.setFillColor(sf::Color(255, 0, 0));
-				collided = true;
+				result = c2CircletoPoly(playerCircleC2, &othergamePolyC2, NULL);
+				cout << ((result != 0) ? ("Circle to Poly - Collision") : "") << endl;
+				if (result)
+				{
+					playerCircle.setFillColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerCircle.setFillColor(sf::Color(0, 255, 0));
+				}
 			}
-			else if (collided == false)
-			{
-				playerCircle.setFillColor(sf::Color(0, 255, 0));
-			}
-
 			// Circle to AABB ----------------------------------------------------------------
-			result = c2CircletoAABB(playerCircleC2, aabb_npc);
-			cout << ((result != 0) ? ("Circle to AABB - Collision") : "") << endl;
-			if (result)
+			if (rectangleDrawn)
 			{
-				playerCircle.setFillColor(sf::Color(255, 0, 0));
-				collided = true;
+				result = c2CircletoAABB(playerCircleC2, aabb_npc);
+				cout << ((result != 0) ? ("Circle to AABB - Collision") : "") << endl;
+				if (result)
+				{
+					playerCircle.setFillColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerCircle.setFillColor(sf::Color(0, 255, 0));
+				}
 			}
-			else if (collided == false)
-			{
-				playerCircle.setFillColor(sf::Color(0, 255, 0));
-			}
-
 			// Circle to Circle ---------------------------------------------------------------
-			result = c2CircletoCircle(playerCircleC2, gameCircle);
-			cout << ((result != 0) ? ("Circle to Circle - Collision") : "") << endl;
-			if (result)
+			if (circleDrawn)
 			{
-				playerCircle.setFillColor(sf::Color(255, 0, 0));
-				collided = true;
+				result = c2CircletoCircle(playerCircleC2, gameCircle);
+				cout << ((result != 0) ? ("Circle to Circle - Collision") : "") << endl;
+				if (result)
+				{
+					playerCircle.setFillColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerCircle.setFillColor(sf::Color(0, 255, 0));
+				}
 			}
-			else if (collided == false)
-			{
-				playerCircle.setFillColor(sf::Color(0, 255, 0));
-			}
-
 			// Input from Keyboard Check ------------------------------------------------------
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::N))
 			{
@@ -493,72 +509,80 @@ int main()
 
 			// Ray to Objects Collisions ------------------------------------------------------------------------
 			// Ray to AABB ---------------------------------------
-			result = c2RaytoAABB(npcRay, aabb_npc, &cast);
-			cout << ((result != 0) ? ("Ray to AABB - Collision") : "") << endl;
-			if (result) {
-				startOfRay.color = sf::Color::Red;
-				endofRay.color = sf::Color::Red;
-				collided = true;
-			}
-			else if (collided == false)
+			if (rectangleDrawn)
 			{
-				startOfRay.color = sf::Color::Green;
-				endofRay.color = sf::Color::Green;
+				result = c2RaytoAABB(npcRay, aabb_npc, &cast);
+				cout << ((result != 0) ? ("Ray to AABB - Collision") : "") << endl;
+				if (result) {
+					startOfRay.color = sf::Color::Red;
+					endofRay.color = sf::Color::Red;
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					startOfRay.color = sf::Color::Green;
+					endofRay.color = sf::Color::Green;
+				}
 			}
-
 			// Ray to Circle ---------------------------------------
-			result = c2RaytoCircle(npcRay, gameCircle, &cast);
-			cout << ((result != 0) ? ("Ray to Circle - Collision") : "") << endl;
-			if (result)
+			if (circleDrawn)
 			{
-				startOfRay.color = sf::Color::Red;
-				endofRay.color = sf::Color::Red;
-				collided = true;
+				result = c2RaytoCircle(npcRay, gameCircle, &cast);
+				cout << ((result != 0) ? ("Ray to Circle - Collision") : "") << endl;
+				if (result)
+				{
+					startOfRay.color = sf::Color::Red;
+					endofRay.color = sf::Color::Red;
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					startOfRay.color = sf::Color::Green;
+					endofRay.color = sf::Color::Green;
+				}
 			}
-			else if (collided == false)
-			{
-				startOfRay.color = sf::Color::Green;
-				endofRay.color = sf::Color::Green;
-			}
-
 			// Ray to Capsule ---------------------------------------
-			result = c2RaytoCapsule(npcRay, gameCapsule, &cast);
-			cout << ((result != 0) ? ("Ray to Capsule - Collision") : "") << endl;
-			if (result) {
-				startOfRay.color = sf::Color::Red;
-				endofRay.color = sf::Color::Red;
-				collided = true;
+			if (capsuleDrawn)
+			{
+				result = c2RaytoCapsule(npcRay, gameCapsule, &cast);
+				cout << ((result != 0) ? ("Ray to Capsule - Collision") : "") << endl;
+				if (result) {
+					startOfRay.color = sf::Color::Red;
+					endofRay.color = sf::Color::Red;
+					collided = true;
+				}
+				else if (collided == false) {
+					startOfRay.color = sf::Color::Green;
+					endofRay.color = sf::Color::Green;
+				}
 			}
-			else if (collided == false) {
-				startOfRay.color = sf::Color::Green;
-				endofRay.color = sf::Color::Green;
-			}
-
 			// Ray to Polygon ---------------------------------------
-			result = c2RaytoPoly(npcRay, &gamePolyC2, NULL, &cast);
-			cout << ((result != 0) ? ("Ray to Polygon - Collision") : "") << endl;
-			if (result) {
-				startOfRay.color = sf::Color::Red;
-				endofRay.color = sf::Color::Red;
-				collided = true;
-			}
-			else if (collided == false) {
-				startOfRay.color = sf::Color::Green;
-				endofRay.color = sf::Color::Green;
-			}
+			if (triangleDrawn)
+			{
+				result = c2RaytoPoly(npcRay, &gamePolyC2, NULL, &cast);
+				cout << ((result != 0) ? ("Ray to Polygon - Collision") : "") << endl;
+				if (result) {
+					startOfRay.color = sf::Color::Red;
+					endofRay.color = sf::Color::Red;
+					collided = true;
+				}
+				else if (collided == false) {
+					startOfRay.color = sf::Color::Green;
+					endofRay.color = sf::Color::Green;
+				}
 
-			result = c2RaytoPoly(npcRay, &othergamePolyC2, NULL, &cast);
-			cout << ((result != 0) ? ("Ray to Polygon - Collision") : "") << endl;
-			if (result) {
-				startOfRay.color = sf::Color::Red;
-				endofRay.color = sf::Color::Red;
-				collided = true;
+				result = c2RaytoPoly(npcRay, &othergamePolyC2, NULL, &cast);
+				cout << ((result != 0) ? ("Ray to Polygon - Collision") : "") << endl;
+				if (result) {
+					startOfRay.color = sf::Color::Red;
+					endofRay.color = sf::Color::Red;
+					collided = true;
+				}
+				else if (collided == false) {
+					startOfRay.color = sf::Color::Green;
+					endofRay.color = sf::Color::Green;
+				}
 			}
-			else if (collided == false) {
-				startOfRay.color = sf::Color::Green;
-				endofRay.color = sf::Color::Green;
-			}
-
 			// Input from Keyboard Check ---------------------------------------
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
 			{
@@ -645,66 +669,76 @@ int main()
 			playerCapShape.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
 
 			// Capsule to AABB ----------------------------------
-			result = c2AABBtoCapsule(aabb_npc, playerCapsule);
-			cout << ((result != 0) ? ("AABB to Capsule - Collision") : "") << endl;
-			if (result)
+			if (rectangleDrawn)
 			{
-				playerCapShape.setColor(sf::Color(255, 0, 0));
-				collided = true;
+				result = c2AABBtoCapsule(aabb_npc, playerCapsule);
+				cout << ((result != 0) ? ("AABB to Capsule - Collision") : "") << endl;
+				if (result)
+				{
+					playerCapShape.setColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerCapShape.setColor(sf::Color(0, 255, 0));
+				}
 			}
-			else if (collided == false)
-			{
-				playerCapShape.setColor(sf::Color(0, 255, 0));
-			}
-
 			// Capsule to Circle  -------------------------------
-			result = c2CircletoCapsule(gameCircle, playerCapsule);
-			cout << ((result != 0) ? ("Circle to Capsule - Collision") : "") << endl;
-			if (result)
+			if (circleDrawn)
 			{
-				playerCapShape.setColor(sf::Color(255, 0, 0));
-				collided = true;
-			}
-			else if (collided == false)
-			{
-				playerCapShape.setColor(sf::Color(0, 255, 0));
+				result = c2CircletoCapsule(gameCircle, playerCapsule);
+				cout << ((result != 0) ? ("Circle to Capsule - Collision") : "") << endl;
+				if (result)
+				{
+					playerCapShape.setColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerCapShape.setColor(sf::Color(0, 255, 0));
+				}
 			}
 			// Capsule to Poly --------------------------------
-			result = c2CapsuletoPoly(playerCapsule, &gamePolyC2, NULL);
-			cout << ((result != 0) ? ("Poly to Capsule - Collision") : "") << endl;
-			if (result)
+			if (triangleDrawn)
 			{
-				playerCapShape.setColor(sf::Color(255, 0, 0));
-				collided = true;
-			}
-			else if (collided == false)
-			{
-				playerCapShape.setColor(sf::Color(0, 255, 0));
-			}
+				result = c2CapsuletoPoly(playerCapsule, &gamePolyC2, NULL);
+				cout << ((result != 0) ? ("Poly to Capsule - Collision") : "") << endl;
+				if (result)
+				{
+					playerCapShape.setColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerCapShape.setColor(sf::Color(0, 255, 0));
+				}
 
-			result = c2CapsuletoPoly(playerCapsule, &othergamePolyC2, NULL);
-			cout << ((result != 0) ? ("Poly to Capsule - Collision") : "") << endl;
-			if (result)
-			{
-				playerCapShape.setColor(sf::Color(255, 0, 0));
-				collided = true;
+				result = c2CapsuletoPoly(playerCapsule, &othergamePolyC2, NULL);
+				cout << ((result != 0) ? ("Poly to Capsule - Collision") : "") << endl;
+				if (result)
+				{
+					playerCapShape.setColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerCapShape.setColor(sf::Color(0, 255, 0));
+				}
 			}
-			else if (collided == false)
-			{
-				playerCapShape.setColor(sf::Color(0, 255, 0));
-			}
-
 			// Capsule to Capsule --------------------------------
-			result = c2CapsuletoCapsule(playerCapsule, gameCapsule);
-			cout << ((result != 0) ? ("Capsule to Capsule - Collision") : "") << endl;
-			if (result)
+			if (capsuleDrawn)
 			{
-				playerCapShape.setColor(sf::Color(255, 0, 0));
-				collided = true;
-			}
-			else if (collided == false)
-			{
-				playerCapShape.setColor(sf::Color(0, 255, 0));
+				result = c2CapsuletoCapsule(playerCapsule, gameCapsule);
+				cout << ((result != 0) ? ("Capsule to Capsule - Collision") : "") << endl;
+				if (result)
+				{
+					playerCapShape.setColor(sf::Color(255, 0, 0));
+					collided = true;
+				}
+				else if (collided == false)
+				{
+					playerCapShape.setColor(sf::Color(0, 255, 0));
+				}
 			}
 
 			// input from keyboard
@@ -892,18 +926,20 @@ int main()
 		otherconvexShapeTrianlge.setPoint(2, sf::Vector2f{ othergamePolyC2.verts[2].x, othergamePolyC2.verts[2].y });
 
 		// Poly to Poly collision --------------------------------------
-		result = c2PolytoPoly(&gamePolyC2, NULL, &othergamePolyC2, NULL);
-		cout << ((result != 0) ? ("Poly to Polygon - Collision") : "") << endl;
-		if (result) {
-			convexShapeTrianlge.setFillColor(sf::Color::Yellow);
-			otherconvexShapeTrianlge.setFillColor(sf::Color::Yellow);
-			collided = true;
+		if (triangleDrawn)
+		{
+			result = c2PolytoPoly(&gamePolyC2, NULL, &othergamePolyC2, NULL);
+			cout << ((result != 0) ? ("Poly to Polygon - Collision") : "") << endl;
+			if (result) {
+				convexShapeTrianlge.setFillColor(sf::Color::Yellow);
+				otherconvexShapeTrianlge.setFillColor(sf::Color::Yellow);
+				collided = true;
+			}
+			else if (collided == false) {
+				convexShapeTrianlge.setFillColor(sf::Color::Black);
+				otherconvexShapeTrianlge.setFillColor(sf::Color::Black);
+			}
 		}
-		else if (collided == false) {
-			convexShapeTrianlge.setFillColor(sf::Color::Black);
-			otherconvexShapeTrianlge.setFillColor(sf::Color::Black);
-		}
-
 		// Move The NPC AABB--------------------------------------------------------------------------------------------
 		sf::Vector2f move_to(npcAABB.getPosition().x + 5 * direction.x, npcAABB.getPosition().y + 5 * direction.y);
 		if (move_to.x < 0) {
@@ -972,7 +1008,6 @@ int main()
 		if (triangleDrawn)
 		{
 			window.draw(convexShapeTrianlge);
-			window.draw(otherconvexShapeTrianlge);
 		}
 		window.draw(playerCircle);
 		window.draw(playerAABB);
